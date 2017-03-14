@@ -11,6 +11,8 @@ CREATE TABLE industries (
 );
 
 
+
+
 CREATE TABLE apprentice_profiles (
     id SERIAL4 PRIMARY KEY,
     user_type_id INTEGER,
@@ -18,14 +20,14 @@ CREATE TABLE apprentice_profiles (
     firstname VARCHAR(200) NOT NULL,
     surname VARCHAR(200) NOT NULL,
     email VARCHAR(300) NOT NULL,
-    mobile_no INTEGER,
+    mobile_no VARCHAR(200),
     work_experience_id INTEGER,
     education_id INTEGER,
     license_id INTEGER,
-    career_object VARCHAR(200) NOT NULL,
-    apprentice_level VARCHAR(200) NOT NULL,
+    career_object VARCHAR(200),
+    apprentice_level VARCHAR(200),
     state VARCHAR(4) NOT NULL,
-    postcode INTEGER NOT NULL,
+    postcode VARCHAR(200) NOT NULL,
     password_digest VARCHAR(400) NOT NULL,
     profile_comp BOOLEAN NOT NULL
 );
@@ -37,10 +39,12 @@ CREATE TABLE employer_profiles (
   firstname VARCHAR(200) NOT NULL,
   surname VARCHAR(200) NOT NULL,
   company_name VARCHAR(200) NOT NULL,
-  website_link VARCHAR(200) NOT NULL,
+  website_link VARCHAR(200),
   business_email VARCHAR(200) NOT NULL,
-  company_number INTEGER,
+  company_number VARCHAR(200),
   password_digest VARCHAR(400) NOT NULL,
+  state VARCHAR(4) NOT NULL,
+  postcode VARCHAR(200) NOT NULL,
   profile_comp BOOLEAN NOT NULL
 
 );
@@ -52,7 +56,8 @@ CREATE TABLE work_experiences (
   title VARCHAR(200) NOT NULL,
   summary TEXT,
   date_started VARCHAR(200) NOT NULL,
-  date_finished VARCHAR(200) NOT NULL
+  date_finished VARCHAR(200) NOT NULL,
+  profile_comp BOOLEAN NOT NULL
 );
 
 CREATE TABLE education (
@@ -60,7 +65,8 @@ CREATE TABLE education (
   apprentice_profile_id INTEGER NOT NULL,
   school VARCHAR(200) NOT NULL,
   certification VARCHAR(200) NOT NULL,
-  year_completed VARCHAR(200) NOT NULL
+  year_completed VARCHAR(200) NOT NULL,
+  profile_comp BOOLEAN NOT NULL
 );
 
 CREATE TABLE licenses (
@@ -68,7 +74,8 @@ CREATE TABLE licenses (
   apprentice_profile_id INTEGER NOT NULL,
   name VARCHAR(200) NOT NULL,
   state_held VARCHAR(4) NOT NULL,
-  year_completed VARCHAR(200) NOT NULL
+  year_completed VARCHAR(200) NOT NULL,
+  profile_comp BOOLEAN NOT NULL
 );
 
 CREATE TABLE referees (
