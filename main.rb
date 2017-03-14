@@ -2,6 +2,28 @@
 require 'sinatra'
 require 'sinatra/reloader'
 
+
+enable :sessions
+
+helpers do
+
+  def current_user
+    # User.find_by(id: session[:user_id])
+  end
+
+  def logged_in? #should return true or false
+    # current_user! nil  #will return a true or false - generally wrapped in an if statement.
+    !!current_user
+  end
+
+
+end
+
+# after do
+#   ActiveRecord::Base.connection.close
+# end
+
+
 get '/' do
   erb :index
 end
