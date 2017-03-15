@@ -7,8 +7,32 @@ CREATE TABLE user_types (
 
 CREATE TABLE industries (
   id SERIAL4 PRIMARY KEY,
-  industry VARCHAR(80) NOT NULL
+  name VARCHAR(80) NOT NULL
 );
+
+INSERT INTO industries (id, name) VALUES (1, 'construction');
+INSERT INTO industries (id, name) VALUES (2, 'electrical');
+INSERT INTO industries (id, name) VALUES (3, 'plumbing');
+INSERT INTO industries (id, name) VALUES (4, 'mechanic');
+INSERT INTO industries (id, name) VALUES (5, 'carpentry');
+INSERT INTO industries (id, name) VALUES (6, 'machinery');
+INSERT INTO industries (id, name) VALUES (7, 'welding');
+
+CREATE TABLE states (
+  id SERIAL4 PRIMARY KEY,
+  name VARCHAR(80) NOT NULL
+);
+
+
+INSERT INTO states (id, name) VALUES (1, 'SA');
+INSERT INTO states (id, name) VALUES (2, 'VIC');
+INSERT INTO states (id, name) VALUES (3, 'NSW');
+INSERT INTO states (id, name) VALUES (4, 'QLD');
+INSERT INTO states (id, name) VALUES (5, 'TAS');
+INSERT INTO states (id, name) VALUES (6, 'ACT');
+INSERT INTO states (id, name) VALUES (7, 'WA');
+INSERT INTO states (id, name) VALUES (8, 'NT');
+
 
 
 
@@ -26,10 +50,10 @@ CREATE TABLE apprentice_profiles (
     license_id INTEGER,
     career_object VARCHAR(200),
     apprentice_level VARCHAR(200),
-    state VARCHAR(4) NOT NULL,
+    state_id INTEGER NOT NULL,
     postcode VARCHAR(200) NOT NULL,
     password_digest VARCHAR(400) NOT NULL,
-    profile_comp BOOLEAN NOT NULL
+    profile_comp BOOLEAN 
 );
 
 CREATE TABLE employer_profiles (
@@ -43,9 +67,9 @@ CREATE TABLE employer_profiles (
   business_email VARCHAR(200) NOT NULL,
   company_number VARCHAR(200),
   password_digest VARCHAR(400) NOT NULL,
-  state VARCHAR(4) NOT NULL,
+  state_id INTEGER NOT NULL,
   postcode VARCHAR(200) NOT NULL,
-  profile_comp BOOLEAN NOT NULL
+  profile_comp BOOLEAN
 
 );
 
@@ -57,7 +81,7 @@ CREATE TABLE work_experiences (
   summary TEXT,
   date_started VARCHAR(200) NOT NULL,
   date_finished VARCHAR(200) NOT NULL,
-  profile_comp BOOLEAN NOT NULL
+  profile_comp BOOLEAN
 );
 
 CREATE TABLE education (
@@ -66,7 +90,7 @@ CREATE TABLE education (
   school VARCHAR(200) NOT NULL,
   certification VARCHAR(200) NOT NULL,
   year_completed VARCHAR(200) NOT NULL,
-  profile_comp BOOLEAN NOT NULL
+  profile_comp BOOLEAN
 );
 
 CREATE TABLE licenses (
@@ -75,7 +99,7 @@ CREATE TABLE licenses (
   name VARCHAR(200) NOT NULL,
   state_held VARCHAR(4) NOT NULL,
   year_completed VARCHAR(200) NOT NULL,
-  profile_comp BOOLEAN NOT NULL
+  profile_comp BOOLEAN
 );
 
 CREATE TABLE referees (

@@ -1,0 +1,71 @@
+<div class="container">
+    <form  action="/view_employer" method="post" class="form-horizontal">
+<fieldset>
+
+
+<legend>Employer Registration</legend>
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">industry</label>
+  <select name="industry_selected" class="form-control input-md">
+    <% @industries.each do |industry| %>
+      <option value = "<%= industry.id %>" ><%= industry.name %></option>
+    <% end %>
+  </select>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">first name</label>
+  <input type="text" name="firstname" class="form-control input-md" placeholder="first name">
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">surname</label>
+  <input type="text" name="surname" class="form-control input-md" placeholder="surname">
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">company name</label>
+  <input type="text" name="company" class="form-control input-md" placeholder="company name">
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">company website</label>
+  <input type="text" name="web" class="form-control input-md" placeholder="www.companyname.com">
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">email</label>
+  <input type="text" name="email" class="form-control input-md" placeholder="name@gmail.com">
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Phone</label>
+  <input type="text" name="number" class="form-control input-md" placeholder="name@gmail.com">
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">state</label>
+  <select name="state" class="form-control input-md">
+    <% @states.each do |state| %>
+      <option value = <%= state.id %> ><%= state.name %></option>
+    <% end %>
+  </select>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">postcode</label>
+  <input type="text" name="postcode" class="form-control input-md" placeholder="3000">
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">password</label>
+  <input type="password" name="password" class="form-control input-md">
+</div>
+
+<div class="wrapper">
+  <p><button class="btn btn-success">Register</button></p>
+</div>
+
+</fieldset>
+</form>
+</div>

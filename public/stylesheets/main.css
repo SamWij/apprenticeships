@@ -9,11 +9,13 @@ body {
   font-size: 20px;
 }
 
-.input-md, .col-sm-3 {
+.input-md, .col-sm-3, select {
   width: 300px;
   height: 35px;
 }
-
+.wrapper {
+    text-align: center;
+}
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
@@ -64,7 +66,7 @@ body {
   padding-top: 0;
 }
 .social_media {
-  
+
   width: 200px;
   height: 100px;
   display: inline-block;
