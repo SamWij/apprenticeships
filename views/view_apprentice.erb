@@ -1,1 +1,43 @@
-<h1>View Apprentice</h1>
+
+<h1>Profile of: <%= @apprentice.firstname %> <%= @apprentice.surname %></h1>
+
+<div class="control-group">
+  <label class="control-label">Selected Industry:</label>
+  <label class="control-label static-text">
+    <%= @apprentice.industry.name %>
+  </label>
+</div>
+
+<div class="control-group">
+  <label class="control-label">Email Address:</label>
+  <label class="control-label static-text">
+    <%= @apprentice.email %>
+  </label>
+</div>
+
+<div class="control-group">
+  <label class="control-label">State:</label>
+  <label class="control-label static-text">
+    <%= @apprentice.state.name %>
+  </label>
+</div>
+
+<div class="control-group">
+  <label class="control-label">Postcode:</label>
+  <label class="control-label static-text">
+    <%= @apprentice.postcode %>
+  </label>
+</div>
+
+<hr>
+
+
+
+
+
+
+
+
+<% if logged_in? %>
+  <p><a href="/apprentice/<%= @apprentice['id'] %>/edit">Edit</a></p>
+<% end %>

@@ -4,6 +4,9 @@ body {
   padding-bottom: 20px;
 }
 
+.education-wrapper {
+  width: 70%;
+}
 .control-label {
   font-family: 'Ubuntu', sans-serif;
   font-size: 20px;

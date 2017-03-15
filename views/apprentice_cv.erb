@@ -1,0 +1,41 @@
+
+
+
+<form  action="/apprentice" method="post" class="form-horizontal">
+
+
+
+<legend>Complete Profile</legend>
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Apprentice Level</label>
+  <input type="text" name="level" class="form-control input-md">
+</div>
+<div class="form-group">
+  <label class="col-md-4 control-label">Career Objective</label>
+		<textarea class="form-control" name="objective" rows="2"></textarea>
+</div>
+
+<h3> Work Experience </h3>
+
+<form method="POST">
+
+
+</form>
+<div class = 'education' id="dynamicInput">
+<input type="hidden" name="user_id" value= <%= session[:id] %> >
+<label>school</label>
+<input type="text" name="school" >
+<label>certification</label>
+<input type="text" name="certification" >
+<label>completed in</label>
+<input type="text" name="year" >
+</div>
+<input type="button" value="+" onClick="addInput('dynamicInput');">
+<input type="button" value="-" onClick="removeInput('dynamicInput');">
+<h3> Licenses </h3>
+
+
+<h3> References </h3>
+
+</form>

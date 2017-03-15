@@ -1,4 +1,3 @@
-CREATE DATABASE apprenticeships;
 
 CREATE TABLE user_types (
   id SERIAL4 PRIMARY KEY,
@@ -45,15 +44,12 @@ CREATE TABLE apprentice_profiles (
     surname VARCHAR(200) NOT NULL,
     email VARCHAR(300) NOT NULL,
     mobile_no VARCHAR(200),
-    work_experience_id INTEGER,
-    education_id INTEGER,
-    license_id INTEGER,
     career_object VARCHAR(200),
     apprentice_level VARCHAR(200),
     state_id INTEGER NOT NULL,
     postcode VARCHAR(200) NOT NULL,
     password_digest VARCHAR(400) NOT NULL,
-    profile_comp BOOLEAN 
+    profile_comp BOOLEAN
 );
 
 CREATE TABLE employer_profiles (

@@ -41,26 +41,29 @@ get '/about' do
   erb :about
 end
 
-get '/contact' do
+get '/contact/new' do
   erb :contact
 end
 
-# new apprentice
-get '/new_apprentice' do
-  @industries = Industry.all
-  @states = State.all
-  erb :new_apprentice
+post '/contact' do
+  erb :index
 end
 
+# new apprentice
+get '/apprentice/new' do
+  @industries = Industry.all
+  @states = State.all
+  @apprentice = ApprenticeProfile.all
+  erb :apprentice
+end
 
-
-post '/view_apprentice' do
-
-
+#create new apprentice
+post '/apprentice' do
   newUser = ApprenticeProfile.new
   newUser.firstname = params[:firstname]
   newUser.surname = params[:surname]
   newUser.email = params[:email]
+  newUser.email = params[:mobile]
   newUser.user_type_id = 1
   newUser.state_id = params[:state]
   newUser.postcode = params[:postcode]
@@ -75,9 +78,34 @@ post '/view_apprentice' do
       erb :index
   end
 end
+get '/apprentice_cv' do
+  @user = ApprenticeProfile.find(session[:id])
+  erb :apprentice_cv
+end
+#display apprentice profile
+get '/apprentice/:id' do
+  @user = ApprenticeProfile.find(session[:id])
+  erb :view_apprentice
+end
+
+#edit apprentice profile
+get '/apprentice/:id/edit' do
+  erb :edit_apprentice
+end
+
+#update apprentice profile
+put '/apprentice/:id' do
+
+end
 
 get '/view_apprentice' do
+  @apprentice = ApprenticeProfile.find(session[:id])
   erb :view_apprentice
+end
+
+#delete apprentice
+delete '/apprentice/:id' do
+
 end
 
 # new employer
@@ -108,23 +136,35 @@ get '/employer_login' do
   erb :employer_login
 end
 
+get '/view_employer' do
+  erb :view_employer
+end
 
 
 post '/session' do
+  e_user = EmployerProfile.find_by(business_email: params[:email])
+  a_user = ApprenticeProfile.find_by(email: params[:email])
 
-  user = ApprenticeProfile.find_by(email: params[:email])
-  if user && user.authenticate(params[:password])
+  if a_user && a_user.authenticate(params[:password])
     #you are authnticated and let me create a session for you.
-    session[:user_id]  = user.id
+    session[:id]  = a_user.id
     redirect '/view_apprentice'
+  elsif e_user && e_user.authenticate(params[:password])
+    #you are authnticated and let me create a session for you.
+    session[:id]  = e_user.id
+    redirect '/view_employer'
   else
     # you are not authenticated.
     erb :index
   end
 end
 
+get '/session/new' do
+  erb :index
+end
+
 delete '/session' do
-  session[:user_id] = nil
+  session[:d] = nil
 
   redirect '/session/new'
 
