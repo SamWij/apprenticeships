@@ -1,5 +1,5 @@
 class State < ActiveRecord::Base
 
- has_many :apprentice_profiles
+ belongs_to :apprentice
 
 end

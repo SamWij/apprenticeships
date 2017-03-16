@@ -1,8 +1,5 @@
+CREATE DATABASE apprenticeships;
 
-CREATE TABLE user_types (
-  id SERIAL4 PRIMARY KEY,
-  user_type VARCHAR(20) NOT NULL
-);
 
 CREATE TABLE industries (
   id SERIAL4 PRIMARY KEY,
@@ -38,20 +35,59 @@ INSERT INTO states (id, name) VALUES (8, 'NT');
 
 CREATE TABLE apprentice_profiles (
     id SERIAL4 PRIMARY KEY,
-    user_type_id INTEGER,
     industry_id INTEGER NOT NULL,
     firstname VARCHAR(200) NOT NULL,
     surname VARCHAR(200) NOT NULL,
     email VARCHAR(300) NOT NULL,
     mobile_no VARCHAR(200),
-    career_object VARCHAR(200),
-    apprentice_level VARCHAR(200),
     state_id INTEGER NOT NULL,
     postcode VARCHAR(200) NOT NULL,
-    password_digest VARCHAR(400) NOT NULL,
-    profile_comp BOOLEAN
+    password_digest VARCHAR(400) NOT NULL
 );
 
+CREATE TABLE work_preferences (
+  id SERIAL4 PRIMARY KEY,
+  apprentice_profile_id INTEGER NOT NULL,
+  preferred_work_location VARCHAR(200) NOT NULL,
+  apprentice_level VARCHAR(200),
+  jobseeking_status VARCHAR(200) NOT NULL
+);
+
+CREATE TABLE work_experiences (
+  id SERIAL4 PRIMARY KEY,
+  apprentice_profile_id INTEGER NOT NULL,
+  company VARCHAR(200),
+  title VARCHAR(200),
+  summary TEXT,
+  date_started VARCHAR(200),
+  date_finished VARCHAR(200)
+);
+
+CREATE TABLE education (
+  id SERIAL4 PRIMARY KEY,
+  apprentice_profile_id INTEGER NOT NULL,
+  school VARCHAR(200),
+  certification VARCHAR(200),
+  year_completed VARCHAR(200)
+);
+
+CREATE TABLE licenses (
+  id SERIAL4 PRIMARY KEY,
+  apprentice_profile_id INTEGER NOT NULL,
+  name VARCHAR(200),
+  state_held VARCHAR(4)
+);
+
+CREATE TABLE referees (
+  id SERIAL4 PRIMARY KEY,
+  apprentice_profile_id INTEGER NOT NULL,
+  name VARCHAR(200),
+  email VARCHAR(200),
+  relationship VARCHAR(200),
+  phone INTEGER
+);
+
+-- FUTURE PHASE
 CREATE TABLE employer_profiles (
   id SERIAL4 PRIMARY KEY,
   industry_id INTEGER NOT NULL,
@@ -69,39 +105,7 @@ CREATE TABLE employer_profiles (
 
 );
 
-CREATE TABLE work_experiences (
+CREATE TABLE user_types (
   id SERIAL4 PRIMARY KEY,
-  apprentice_profile_id INTEGER NOT NULL,
-  company VARCHAR(200) NOT NULL,
-  title VARCHAR(200) NOT NULL,
-  summary TEXT,
-  date_started VARCHAR(200) NOT NULL,
-  date_finished VARCHAR(200) NOT NULL,
-  profile_comp BOOLEAN
-);
-
-CREATE TABLE education (
-  id SERIAL4 PRIMARY KEY,
-  apprentice_profile_id INTEGER NOT NULL,
-  school VARCHAR(200) NOT NULL,
-  certification VARCHAR(200) NOT NULL,
-  year_completed VARCHAR(200) NOT NULL,
-  profile_comp BOOLEAN
-);
-
-CREATE TABLE licenses (
-  id SERIAL4 PRIMARY KEY,
-  apprentice_profile_id INTEGER NOT NULL,
-  name VARCHAR(200) NOT NULL,
-  state_held VARCHAR(4) NOT NULL,
-  year_completed VARCHAR(200) NOT NULL,
-  profile_comp BOOLEAN
-);
-
-CREATE TABLE referees (
-  id SERIAL4 PRIMARY KEY,
-  apprentice_profile_id INTEGER NOT NULL,
-  name VARCHAR(200) NOT NULL,
-  email VARCHAR(200) NOT NULL,
-  phone INTEGER NOT NULL
+  user_type VARCHAR(20) NOT NULL
 );

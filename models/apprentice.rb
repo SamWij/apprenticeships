@@ -2,6 +2,7 @@ class ApprenticeProfile < ActiveRecord::Base
   has_many :licenses
   has_many :referees
   has_many :work_experiences
+  has_many :work_preferences
   has_many :educations
   belongs_to :industry
   belongs_to :state

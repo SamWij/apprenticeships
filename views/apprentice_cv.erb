@@ -1,41 +1,140 @@
 
+  <form  action="/apprentice" method="post" class="form-horizontal">
+
+  <legend>Complete Profile</legend>
+  <h3>Work Preferences</h3>
+    <div class="form-group">
+      <input type="hidden" name="id" value= <%= session[:id] %> >
+      <label class="col-md-6 control-label">Apprentice Level</label>
+      <select class="level" name="level">
+        <option value="Not Started">Not Started</option>
+        <option value="1st Year">1st Year</option>
+        <option value="1st Year">2nd Year</option>
+        <option value="3rd Year">3rd Year</option>
+      </select>
+    </div>
+
+  <div class="form-group">
+    <label class="col-md-6 control-label">preferred work location</label>
+    <input type="text" name="location" class="form-control input-md">
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-6 control-label">Jobseeking Status</label>
+    <select class="level" name="level">
+      <option value="Actively Looking">Actively Looking</option>
+      <option value="Could be tempted">Could be tempted</option>
+    </select>
+  </div>
 
 
-<form  action="/apprentice" method="post" class="form-horizontal">
+  <h3> Work Experience </h3>
+  <div class = 'experience' id="work_experience">
+    <div class="form-group">
+      <label class="col-md-6 control-label">company</label>
+      <input type="hidden" name="experience_id" value= <%= session[:id] %> >
+      <input type="text" name="company" class="form-control input-md">
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-6 control-label">title</label>
+      <input type="text" name="role_title" class="form-control input-md">
+    </div>
+    <div class="form-group">
+        <label class="col-md-6 control-label">started</label>
+        <input type="text" name="year_start" class="form-control input-md">
+    </div>
+    <div class="form-group">
+        <label class="col-md-6 control-label">finished</label>
+        <input type="text" name="year_finish" class="form-control input-md">
+    </div>
+    <div class="form-group">
+        <label class="col-md-6 control-label">Summary</label>
+        <input type="text" name="year" class="form-control input-md">
+    </div>
+
+      <input type="button" value="+" onClick="addWorkExperience('work_experience');">
+  </div>
 
 
+  <h3> Education </h3>
+  <div class = 'education' id="education">
+    <div class="form-group">
 
-<legend>Complete Profile</legend>
+      <label class="col-md-6 control-label">school</label>
+      <input type="hidden" name="education_id" value= <%= session[:id] %> >
+      <input type="text" name="school" class="form-control input-md">
+      <label class="col-md-6 control-label">certification</label>
+      <input type="text" name="certification" class="form-control input-md">
+      <label class="col-md-6 control-label">completed in</label>
+      <input type="text" name="year" class="form-control input-md">
+      </div>
+      <input type="button" value="+" onClick="addEducation('education');">
+    </div>
+  </div>
 
-<div class="form-group">
-  <label class="col-md-4 control-label">Apprentice Level</label>
-  <input type="text" name="level" class="form-control input-md">
+
+  <h3> Licenses </h3>
+  <div class = 'license' id="license">
+  <div class="row  form-group">
+    <input type="hidden" name="license_id" value= <%= session[:id] %> >
+    <div class="col-md-3">
+      <div class="form-group form-group-sm">
+        <label class="col-md-6 control-label">Title</label>
+            <input type="text" class="form-control input-md" id="firstname" name = "title">
+        </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+          <label class="col-md-6 control-label">State Held</label>
+          <input type="text" class="form-control input-md" name= "state_held">
+      </div>
+    </div>
+
+
+  </div>
+    <input type="button" value="+" onClick="addLicenses('license');">
 </div>
-<div class="form-group">
-  <label class="col-md-4 control-label">Career Objective</label>
-		<textarea class="form-control" name="objective" rows="2"></textarea>
+
+  <h3> References </h3>
+  <div class = 'license' id="license">
+  <div class="row" id = "references">
+    <div class="col-md-3">
+      <div class="form-group form-group-sm">
+        <label class="control-label">Name</label>
+        <input type="text" class="form-control" name = "referee_name" >
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+        <label class="control-label">Relationship</label>
+        <input type="text" class="form-control" name ="referee_relationship">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label class="control-label">email</label>
+        <input type="text" class="form-control" name = "referee_email">
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+        <label class="control-label">phone</label>
+        <input type="text" class="form-control" name ="referee_phone">
+      </div>
+    </div>
+  </div>
+  <input type="button" value="+" onClick="addReferences('license');">
+</div>
+</div>
+<div class="wrapper">
+  <p><button class="btn btn-success">Create Profile</button></p>
 </div>
 
-<h3> Work Experience </h3>
-
-<form method="POST">
-
-
-</form>
-<div class = 'education' id="dynamicInput">
-<input type="hidden" name="user_id" value= <%= session[:id] %> >
-<label>school</label>
-<input type="text" name="school" >
-<label>certification</label>
-<input type="text" name="certification" >
-<label>completed in</label>
-<input type="text" name="year" >
-</div>
-<input type="button" value="+" onClick="addInput('dynamicInput');">
-<input type="button" value="-" onClick="removeInput('dynamicInput');">
-<h3> Licenses </h3>
-
-
-<h3> References </h3>
-
-</form>
+  </form>

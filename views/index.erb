@@ -1,46 +1,48 @@
 
-
-  <div class="jumbotron">
+<div class="jumbotron">
     <h1>Apprenticeship</h1>
     <p class="lead">Find your apprenticeship employment today.</p>
   </div>
+
+
 <div class="container">
-
-      <form action="/session" method="post">
-        <div class="modal-body">
+  <form action="/session" method="post">
+    <div class="modal-body">
     <div class="row">
-        <div class="col-xs-6">
-            <div class="well">
+    <div class="col-xs-6">
+    <div class="well">
 
-                    <div class="form-group">
-                        <label for="username" class="control-label">Username</label>
-                        <input type="text" class="form-control" id="email" name="email" value="" required="" title="Please enter you username" placeholder="example@gmail.com">
-                        <span class="help-block"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="password" class="control-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" value="" required="" title="Please enter your password">
-                        <span class="help-block"></span>
-                    </div>
-                    <div id="loginErrorMsg" class="alert alert-error hide">Wrong username or password</div>
+      <div class="form-group">
+        <label for="username" class="control-label">Username</label>
+        <input type="text" class="form-control" id="email" name="email" value="" required="" title="Please enter you username" placeholder="example@gmail.com">
+      </div>
 
-                    <button type="submit" class="btn btn-success btn-block">Login</button>
+      <div class="form-group">
+        <label for="password" class="control-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password" value="" required="" title="Please enter your password">
+      </div>
 
-                </form>
-            </div>
-        </div>
-        <div class="col-xs-6">
-            <p class="lead">Register now for <span class="text-success">FREE</span></p>
-            <ul class="list-unstyled" style="line-height: 2">
-                <li><span class="fa fa-check text-success"></span> Create a personal profile</li>
-                <li><span class="fa fa-check text-success"></span> View and apply for jobs</li>
-                <li><span class="fa fa-check text-success"></span> Let employers view your profile</li>
-            </ul>
-            <p><a href="/apprentice/new" class="btn btn-info btn-block">Yes please, register now!</a></p>
-        </div>
+      <div id="loginErrorMsg" class="alert alert-error hide">Wrong username or password</div>
+      <button type="submit" class="btn btn-success btn-block">Login</button>
+  </form>
+
+  <form action="/session" method ="post">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit" class="btn btn-danger btn-block">Log Out</button>
+  </form>
+
     </div>
-</div>
-      </form>
+    </div>
 
-
+    <div class="col-xs-6">
+      <p class="lead">Register now for <span class="text-success">FREE</span></p>
+      <ul class="list-unstyled" style="line-height: 2">
+        <li><span class="fa fa-check text-success"></span> Create a personal profile</li>
+        <li><span class="fa fa-check text-success"></span> View and apply for jobs</li>
+        <li><span class="fa fa-check text-success"></span> Let employers view your profile</li>
+      </ul>
+      <p><a href="/apprentice/new" class="btn btn-info btn-block">Yes please, register now!</a></p>
+    </div>
+    </div>
+    </div>
 </div>
