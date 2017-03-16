@@ -1,10 +1,10 @@
-# require 'pry'
+require 'pry'
 require 'sinatra'
-# require 'sinatra/reloader'
+require 'sinatra/reloader'
 require 'active_record'
 require_relative 'database_config'
 require_relative 'models/apprentice'
-require_relative 'models/education'
+require_relative 'models/qualification'
 require_relative 'models/industry'
 require_relative 'models/license'
 require_relative 'models/referee'
@@ -73,30 +73,130 @@ post '/apprentice' do
     erb :index
   end
 end
-#create apprentice cv
-get '/apprentice_cv' do
 
-  erb :apprentice_cv
-end
 
 
 post '/apprentice_cv' do
-  #education
-  education = Education.new
+  new_user = ApprenticeProfile.new
+  #workPreferences
+  work_pref = WorkPreferences.new
+  work_pref.apprentice_profile_id = session[:id]
+  work_pref.preferred_work_location = params[:location]
+  work_pref.apprentice_level = params[:level]
+  work_pref.jobseeking_status = params[:status]
+  work_pref.save
+
+  #work_experiences1
+  work_exp = WorkExperience.new
+  work_exp.apprentice_profile_id = session[:id]
+  work_exp.company = params[:company_name1]
+  work_exp.title = params[:composition_title1]
+  work_exp.summary = params[:duties_1]
+  work_exp.date_started = params[:start_date1]
+  work_exp.date_finished = params[:finish_date1]
+  work_exp.save
+
+  #work_experiences2
+  work_exp = WorkExperience.new
+  work_exp.apprentice_profile_id = session[:id]
+  work_exp.company = params[:company_name2]
+  work_exp.title = params[:composition_title2]
+  work_exp.summary = params[:duties_2]
+  work_exp.date_started = params[:start_date2]
+  work_exp.date_finished = params[:finish_date2]
+  work_exp.save
+
+  #work_experiences3
+  work_exp = WorkExperience.new
+  work_exp.apprentice_profile_id = session[:id]
+  work_exp.company = params[:company_name3]
+  work_exp.title = params[:composition_title3]
+  work_exp.summary = params[:duties_3]
+  work_exp.date_started = params[:start_date3]
+  work_exp.date_finished = params[:finish_date3]
+  work_exp.save
+
+  #education1
+  education = Qualification.new
   education.apprentice_profile_id = session[:id]
-  education.school = params[:school]
-  education.certification = params[:certification]
-  education.year_completed = params[:year]
+  education.school = params[:school_name1]
+  education.certification = params[:certification1]
+  education.year_completed = params[:year1]
+  education.save
+
+  #education2
+  education = Qualification.new
+  education.apprentice_profile_id = session[:id]
+  education.school = params[:school_name2]
+  education.certification = params[:certification2]
+  education.year_completed = params[:year2]
+  education.save
+
+  #education3
+  education = Qualification.new
+  education.apprentice_profile_id = session[:id]
+  education.school = params[:school_name3]
+  education.certification = params[:certification3]
+  education.year_completed = params[:year3]
+  education.save
+
+  #licenses1
+  license = License.new
+  license.apprentice_profile_id = session[:id]
+  license.name = params[:license1]
+  license.state_held = params[:license_state1]
+  license.save
+
+  #licenses2
+  license = License.new
+  license.apprentice_profile_id = session[:id]
+  license.name = params[:license2]
+  license.state_held = params[:license_state2]
+  license.save
+
+  #licenses3
+  license = License.new
+  license.apprentice_profile_id = session[:id]
+  license.name = params[:license3]
+  license.state_held = params[:license_state3]
+  license.save
+
+  #referee1
+  referee = Referee.new
+  referee.apprentice_profile_id = session[:id]
+  referee.name = params[:referee_name1]
+  referee.email = params[:referee_email1]
+  referee.relationship = params[:relationship1]
+  referee.phone = params[:referee_phone1]
+  referee.save
+
+  #referee2
+  referee = Referee.new
+  referee.apprentice_profile_id = session[:id]
+  referee.name = params[:referee_name2]
+  referee.email = params[:referee_email2]
+  referee.relationship = params[:relationship2]
+  referee.phone = params[:referee_phone2]
+  referee.save
+
+  #referee3
+  referee = Referee.new
+  referee.apprentice_profile_id = session[:id]
+  referee.name = params[:referee_name3]
+  referee.email = params[:referee_email3]
+  referee.relationship = params[:relationship3]
+  referee.phone = params[:referee_phone3]
+  referee.save
+
+  redirect "/view_apprentice/#{a_user.id}"
 end
 
-
-#display apprentice profile
-get '/view_apprentice/:id' do
+#create apprentice cv
+get '/apprentice_cv/:id' do
   @apprentice = ApprenticeProfile.find(params[:id])
-
-
-  erb :view_apprentice
+  erb :apprentice_cv
 end
+
 
 #edit apprentice profile
 get '/apprentice/:id/edit' do
@@ -123,6 +223,7 @@ end
 
 
 
+
 post '/session' do
 
   a_user = ApprenticeProfile.find_by(email: params[:email])
@@ -130,11 +231,18 @@ post '/session' do
   if a_user && a_user.authenticate(params[:password])
     #you are authnticated and let me create a session for you.
     session[:id]  = a_user.id
-    redirect '/view_apprentice'
+    redirect "/view_apprentice/#{a_user.id}"
   else
     # you are not authenticated.
     erb :index
   end
+end
+
+#display apprentice profile
+get "/view_apprentice/:id" do
+  @apprentice = ApprenticeProfile.find(params[:id])
+
+  erb :view_apprentice
 end
 
 get '/session/new' do

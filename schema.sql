@@ -63,7 +63,7 @@ CREATE TABLE work_experiences (
   date_finished VARCHAR(200)
 );
 
-CREATE TABLE education (
+CREATE TABLE qualifications (
   id SERIAL4 PRIMARY KEY,
   apprentice_profile_id INTEGER NOT NULL,
   school VARCHAR(200),

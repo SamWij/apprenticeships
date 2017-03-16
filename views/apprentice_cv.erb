@@ -1,7 +1,8 @@
 
-  <form  action="/apprentice" method="post" class="form-horizontal">
+  <form  action="/apprentice_cv" method="post" class="form-horizontal">
+    <input type="hidden" name="license_id" value= <%= session[:id] %> >
 
-  <legend>Complete Profile</legend>
+  <h1>Profile of: <%= @apprentice.firstname %> <%= @apprentice.surname %></h1>
   <h3>Work Preferences</h3>
     <div class="form-group">
       <input type="hidden" name="id" value= <%= session[:id] %> >
@@ -21,120 +22,332 @@
 
   <div class="form-group">
     <label class="col-md-6 control-label">Jobseeking Status</label>
-    <select class="level" name="level">
+    <select class="level" name="status">
       <option value="Actively Looking">Actively Looking</option>
       <option value="Could be tempted">Could be tempted</option>
     </select>
   </div>
-
+<!-- ---------------------------------------- WORK EXPERIENCE ----------------------------------------------- -->
 
   <h3> Work Experience </h3>
-  <div class = 'experience' id="work_experience">
-    <div class="form-group">
-      <label class="col-md-6 control-label">company</label>
-      <input type="hidden" name="experience_id" value= <%= session[:id] %> >
-      <input type="text" name="company" class="form-control input-md">
-    </div>
+  <div class="panel-group form-group" id="accordion">
 
-    <div class="form-group">
-      <label class="col-md-6 control-label">title</label>
-      <input type="text" name="role_title" class="form-control input-md">
-    </div>
-    <div class="form-group">
-        <label class="col-md-6 control-label">started</label>
-        <input type="text" name="year_start" class="form-control input-md">
-    </div>
-    <div class="form-group">
-        <label class="col-md-6 control-label">finished</label>
-        <input type="text" name="year_finish" class="form-control input-md">
-    </div>
-    <div class="form-group">
-        <label class="col-md-6 control-label">Summary</label>
-        <input type="text" name="year" class="form-control input-md">
-    </div>
-
-      <input type="button" value="+" onClick="addWorkExperience('work_experience');">
-  </div>
-
-
-  <h3> Education </h3>
-  <div class = "education-section">
-    <div class="form-group form-education">
-
-      <label class="col-md-6 control-label">school</label>
-      <input type='hidden' name='education_id' value= '<%= session[:id] %>' >
-      <input type="text" name="schools[1]" class="form-control input-md">
-      <label class="col-md-6 control-label">certification</label>
-      <input type="text" name="certification[1]" class="form-control input-md">
-      <label class="col-md-6 control-label">completed in</label>
-      <input type="text" name="year[1]" class="form-control input-md">
-    </div>
-      <input type="button" value="+" onClick="addEducation();">
-    </div>
-  </div>
-
-
-  <h3> Licenses </h3>
-  <div class = 'license' id="license">
-  <div class="row  form-group">
-    <input type="hidden" name="license_id" value= <%= session[:id] %> >
-    <div class="col-md-3">
-      <div class="form-group form-group-sm">
-        <label class="col-md-6 control-label">Title</label>
-            <input type="text" class="form-control input-md" id="firstname" name = "title">
+      <div class="panel panel-default form-group">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#WorkExperience1">1. Work Experience</a></h4>
         </div>
-    </div>
 
-    <div class="col-md-3">
-      <div class="form-group">
-          <label class="col-md-6 control-label">State Held</label>
-          <input type="text" class="form-control input-md" name= "state_held">
+      <div id="WorkExperience1" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <label class="control-label">Company Name</label>
+          <input type="text" class="form-control" name = "company_name1" >
+
+          <label class="control-label">Position Title</label>
+          <input type="text" class="form-control" name = "position_title1" >
+
+          <label class="control-label">Summary of Duties</label>
+          <textarea name="duties_1" class="form-control" rows="2"></textarea>
+
+          <label class="control-label">Date Started</label>
+          <input type="text" class="form-control" name ="start_date1">
+
+          <label class="control-label">Date Finished</label>
+          <input type="text" class="form-control" name ="finish_date1">
+        </div>
       </div>
     </div>
 
+    <div class="panel panel-default form-group">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#WorkExperience2">2. Work Experience</a></h4>
+      </div>
+
+    <div id="WorkExperience2" class="panel-collapse collapse">
+      <div class="panel-body">
+        <label class="control-label">Company Name</label>
+        <input type="text" class="form-control" name = "company_name2" >
+
+        <label class="control-label">Position Title</label>
+        <input type="text" class="form-control" name = "position_title2" >
+
+        <label class="control-label">Summary of Duties</label>
+        <textarea name="duties_2" class="form-control" rows="2"></textarea>
+
+        <label class="control-label">Date Started</label>
+        <input type="text" class="form-control" name ="start_date2">
+
+        <label class="control-label">Date Finished</label>
+        <input type="text" class="form-control" name ="finish_date2">
+      </div>
+    </div>
 
   </div>
-    <input type="button" value="+" onClick="addLicenses('license');">
+    <div class="panel panel-default form-group">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#WorkExperience3">3. Work Experience</a></h4>
+      </div>
+
+      <div id="WorkExperience3" class="panel-collapse collapse">
+        <div class="panel-body">
+          <label class="control-label">Company Name</label>
+          <input type="text" class="form-control" name = "company_name3" >
+
+          <label class="control-label">Position Title</label>
+          <input type="text" class="form-control" name = "position_title3" >
+
+          <label class="control-label">Summary of Duties</label>
+          <textarea name="duties_3" class="form-control" rows="2"></textarea>
+
+          <label class="control-label">Date Started</label>
+          <input type="text" class="form-control" name ="start_date3">
+
+          <label class="control-label">Date Finished</label>
+          <input type="text" class="form-control" name ="finish_date3">
+      </div>
+    </div>
+  </div>
 </div>
 
+<!-- ---------------------------------------- EDUCATION ----------------------------------------------- -->
+  <h3> Education </h3>
+  <div class="panel-group form-group" id="accordion">
+
+      <div class="panel panel-default form-group">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#education1">1. Education</a></h4>
+        </div>
+
+      <div id="education1" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <label class="control-label">School Name</label>
+          <input type="text" class="form-control" name = "school_name1" >
+
+          <label class="control-label">Certification</label>
+          <input type="text" class="form-control" name = "certification1" >
+
+          <label class="control-label">Year Completed</label>
+          <input type="text" class="form-control" name ="year1">
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default form-group">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#education2">2. Education</a></h4>
+      </div>
+
+    <div id="education2" class="panel-collapse collapse">
+      <div class="panel-body">
+        <label class="control-label">School Name</label>
+        <input type="text" class="form-control" name = "school_name2" >
+
+        <label class="control-label">Certification</label>
+        <input type="text" class="form-control" name = "certification2" >
+
+        <label class="control-label">Year Completed</label>
+        <input type="text" class="form-control" name ="year2">
+      </div>
+    </div>
+
+  </div>
+    <div class="panel panel-default form-group">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#education3">3. Education</a></h4>
+      </div>
+
+      <div id="education3" class="panel-collapse collapse">
+        <div class="panel-body">
+          <label class="control-label">School Name</label>
+          <input type="text" class="form-control" name = "school_name3" >
+
+          <label class="control-label">Certification</label>
+          <input type="text" class="form-control" name = "certification3" >
+
+          <label class="control-label">Year Completed</label>
+          <input type="text" class="form-control" name ="year3">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ---------------------------------------- LICENSES ----------------------------------------------- -->
+  <h3> Licenses </h3>
+
+      <div class="panel-group form-group" id="accordion">
+
+          <div class="panel panel-default form-group">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#license1">1. License</a></h4>
+            </div>
+
+          <div id="license1" class="panel-collapse collapse in">
+            <div class="panel-body">
+              <label class="control-label">License Name</label>
+              <input type="text" class="form-control" name = "license1" >
+
+              <label class="control-label">state held</label>
+              <select class="form-control" name ='license_state1'>
+                <option value="VIC">VIC</option>
+                <option value="NSW">NSW</option>
+                <option value="SA">SA</option>
+                <option value="WA">WA</option>
+                <option value="ACT">ACT</option>
+                <option value="QLD">QLD</option>
+                <option value="NT">NT</option>
+              </select>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default form-group">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#license2">2. License</a></h4>
+          </div>
+
+        <div id="license1" class="panel-collapse collapse">
+          <div class="panel-body">
+            <label class="control-label">License Name</label>
+            <input type="text" class="form-control" name = "license2" >
+
+            <label class="control-label">state held</label>
+            <select class="form-control" name ='license_state2'>
+              <option value="VIC">VIC</option>
+              <option value="NSW">NSW</option>
+              <option value="SA">SA</option>
+              <option value="WA">WA</option>
+              <option value="ACT">ACT</option>
+              <option value="QLD">QLD</option>
+              <option value="NT">NT</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+        <div class="panel panel-default form-group">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#license3">3. License</a></h4>
+          </div>
+
+          <div id="license3" class="panel-collapse collapse">
+            <div class="panel-body">
+              <label class="control-label">License Name</label>
+              <input type="text" class="form-control" name = "license3" >
+
+              <label class="control-label">state held</label>
+              <select class="form-control" name ='license_state3'>
+                <option value="VIC">VIC</option>
+                <option value="NSW">NSW</option>
+                <option value="SA">SA</option>
+                <option value="WA">WA</option>
+                <option value="ACT">ACT</option>
+                <option value="QLD">QLD</option>
+                <option value="NT">NT</option>
+              </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- ---------------------------------------- REFERENCES ----------------------------------------------- -->
   <h3> References </h3>
-  <div class = 'license' id="license">
-  <div class="row" id = "references">
-    <div class="col-md-3">
-      <div class="form-group form-group-sm">
-        <label class="control-label">Name</label>
-        <input type="text" class="form-control" name = "referee_name" >
-      </div>
-    </div>
+      <div class="panel-group form-group" id="accordion">
 
-    <div class="col-md-3">
-      <div class="form-group">
-        <label class="control-label">Relationship</label>
-        <input type="text" class="form-control" name ="referee_relationship">
-      </div>
-    </div>
-  </div>
+          <div class="panel panel-default form-group">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne1">1. Referee</a></h4>
+            </div>
 
-  <div class="row">
-    <div class="col-md-3">
-      <div class="form-group">
-        <label class="control-label">email</label>
-        <input type="text" class="form-control" name = "referee_email">
-      </div>
-    </div>
+          <div id="collapseOne1" class="panel-collapse collapse in">
+            <div class="panel-body">
+              <label class="control-label">Relationship</label>
+              <select class="form-control" name ='relationship1'>
+                <option value="Manager">Manager</option>
+                <option value="Colleague">Colleague</option>
+                <option value="Teacher">Teacher</option>
+                <option value="Relative">Relative</option>
+              </select>
 
-    <div class="col-md-3">
-      <div class="form-group">
-        <label class="control-label">phone</label>
-        <input type="text" class="form-control" name ="referee_phone">
+              <label class="control-label">Name</label>
+              <input type="text" class="form-control" name = "referee_name1" >
+
+              <label class="control-label">email</label>
+              <input type="text" class="form-control" name = "referee_email1">
+
+              <label class="control-label">phone</label>
+              <input type="text" class="form-control" name ="referee_phone1">
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default form-group">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo1">2. Referee</a></h4>
+          </div>
+
+        <div id="collapseTwo1" class="panel-collapse collapse">
+          <div class="panel-body">
+            <label class="control-label">Relationship</label>
+              <select class="form-control" name ='relationship2'>
+                <option value="Manager">Manager</option>
+                <option value="Colleague">Colleague</option>
+                <option value="Teacher">Teacher</option>
+                <option value="Relative">Relative</option>
+              </select>
+
+            <label class="control-label">Name</label>
+            <input type="text" class="form-control" name = "referee_name2" >
+
+            <label class="control-label">email</label>
+            <input type="text" class="form-control" name = "referee_email2">
+
+            <label class="control-label">phone</label>
+            <input type="text" class="form-control" name ="referee_phone2">
+          </div>
+        </div>
+
+      </div>
+        <div class="panel panel-default form-group">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree1">3. Referee</a></h4>
+          </div>
+
+          <div id="collapseThree1" class="panel-collapse collapse">
+            <div class="panel-body">
+              <label class="control-label">Relationship</label>
+              <select class="form-control" name ='relationship3'>
+                <option value="Manager">Manager</option>
+                <option value="Colleague">Colleague</option>
+                <option value="Teacher">Teacher</option>
+                <option value="Relative">Relative</option>
+              </select>
+
+              <label class="control-label">Name</label>
+              <input type="text" class="form-control" name = "referee_name3" >
+
+              <label class="control-label">email</label>
+              <input type="text" class="form-control" name = "referee_email3">
+
+              <label class="control-label">phone</label>
+              <input type="text" class="form-control" name ="referee_phone3">
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <input type="button" value="+" onClick="addReferences('license');">
-</div>
-</div>
-<div class="wrapper">
-  <p><button class="btn btn-success">Create Profile</button></p>
-</div>
+    <div class="wrapper">
+      <p><button class="btn btn-success">Create Profile</button></p>
+    </div>
 
   </form>
