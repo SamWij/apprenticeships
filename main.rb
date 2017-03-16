@@ -56,29 +56,26 @@ end
 
 #create new apprentice
 post '/apprentice' do
-  newUser = ApprenticeProfile.new
+  new_user = ApprenticeProfile.new
 
-  newUser.industry_id = params[:industry_selected]
-  newUser.firstname = params[:firstname]
-  newUser.surname = params[:surname]
-  newUser.email = params[:email]
-  newUser.mobile_no = params[:mobile]
-  newUser.state_id = params[:state]
-  newUser.postcode = params[:postcode]
-  newUser.password = params[:password]
-  newUser.save
+  new_user.industry_id = params[:industry_selected]
+  new_user.firstname = params[:firstname]
+  new_user.surname = params[:surname]
+  new_user.email = params[:email]
+  new_user.mobile_no = params[:mobile]
+  new_user.state_id = params[:state]
+  new_user.postcode = params[:postcode]
+  new_user.password = params[:password]
 
-  @session = ApprenticeProfile.find(params[:id])
-
-  if newUser.save
-    redirect '/view_apprentice/:id'
-    else
-      erb :index
+  if new_user.save
+    redirect "/view_apprentice/#{new_user.id}"
+  else
+    erb :index
   end
 end
 #create apprentice cv
 get '/apprentice_cv' do
-  
+
   erb :apprentice_cv
 end
 
@@ -95,7 +92,7 @@ end
 
 #display apprentice profile
 get '/view_apprentice/:id' do
-  @apprentice = ApprenticeProfile.all
+  @apprentice = ApprenticeProfile.find(params[:id])
 
 
   erb :view_apprentice

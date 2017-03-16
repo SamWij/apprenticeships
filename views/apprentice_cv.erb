@@ -58,18 +58,18 @@
 
 
   <h3> Education </h3>
-  <div class = 'education' id="education">
-    <div class="form-group">
+  <div class = "education-section">
+    <div class="form-group form-education">
 
       <label class="col-md-6 control-label">school</label>
-      <input type="hidden" name="education_id" value= <%= session[:id] %> >
-      <input type="text" name="school" class="form-control input-md">
+      <input type='hidden' name='education_id' value= '<%= session[:id] %>' >
+      <input type="text" name="schools[1]" class="form-control input-md">
       <label class="col-md-6 control-label">certification</label>
-      <input type="text" name="certification" class="form-control input-md">
+      <input type="text" name="certification[1]" class="form-control input-md">
       <label class="col-md-6 control-label">completed in</label>
-      <input type="text" name="year" class="form-control input-md">
-      </div>
-      <input type="button" value="+" onClick="addEducation('education');">
+      <input type="text" name="year[1]" class="form-control input-md">
+    </div>
+      <input type="button" value="+" onClick="addEducation();">
     </div>
   </div>
 
