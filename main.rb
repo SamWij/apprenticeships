@@ -242,7 +242,7 @@ end
 #edit apprentice profile
 get '/edit_apprentice/edit/:id' do
   @apprentice = ApprenticeProfile.find(params[:id])
-  id = @apprentice
+  id = @apprentice.id
   @workpref = WorkPreferences.find(id)
   @industries = Industry.all
   @states = State.all
