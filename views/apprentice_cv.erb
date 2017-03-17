@@ -1,6 +1,6 @@
 
   <form  action="/apprentice_cv" method="post" class="form-horizontal">
-    <input type="hidden" name="license_id" value= <%= session[:id] %> >
+    <input type="hidden" name="session_id" value= <%= session[:id] %> >
 
   <h1>Profile of: <%= @apprentice.firstname %> <%= @apprentice.surname %></h1>
   <h3>Work Preferences</h3>
