@@ -77,7 +77,7 @@ end
 
 
 post '/apprentice_cv' do
-  new_user = ApprenticeProfile.new
+  new_user = session[:id]
   #workPreferences
   work_pref = WorkPreferences.new
   work_pref.apprentice_profile_id = session[:id]
@@ -188,7 +188,7 @@ post '/apprentice_cv' do
   referee.phone = params[:referee_phone3]
   referee.save
 
-  redirect "/view_apprentice/#{a_user.id}"
+  redirect "/view_apprentice/#{new_user}"
 end
 
 #create apprentice cv
@@ -198,15 +198,9 @@ get '/apprentice_cv/:id' do
 end
 
 
-#edit apprentice profile
-get '/apprentice/:id/edit' do
-  erb :edit_apprentice
-end
 
-#update apprentice profile
-put '/apprentice/:id' do
 
-end
+
 
 
 
@@ -243,6 +237,46 @@ get "/view_apprentice/:id" do
   @apprentice = ApprenticeProfile.find(params[:id])
 
   erb :view_apprentice
+end
+
+#edit apprentice profile
+get '/edit_apprentice/edit/:id' do
+  @apprentice = ApprenticeProfile.find(params[:id])
+  id = @apprentice
+  @workpref = WorkPreferences.find(id)
+  @industries = Industry.all
+  @states = State.all
+
+  erb :edit_apprentice
+end
+
+#display apprentice profile
+post "/view_apprentice/:id" do
+  @apprentice = ApprenticeProfile.find(params[:id])
+
+  erb :view_apprentice
+end
+
+#update apprentice profile
+put "/view_apprentice/:id" do
+  update = ApprenticeProfile.find(params[:id])
+  update_workpref = WorkPreferences.find(update)
+  industry = Industry.find(update)
+  industry.name = params[:update_industry_id]
+  update.firstname = params[:update_firstname]
+  update.surname = params[:update_surname]
+  update.email = params[:update_email]
+  update.mobile_no = params[:update_mobile]
+  update.state_id = params[:update_state]
+  update.postcode = params[:update_postcode]
+  update.save
+
+  update_workpref.apprentice_level = params[:update_level]
+  update_workpref.preferred_work_location = params[:update_location]
+  update_workpref.jobseeking_status = params[:update_status]
+  update_workpref.save
+
+  redirect "/view_apprentice/#{update.id}"
 end
 
 get '/session/new' do

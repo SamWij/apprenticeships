@@ -9,6 +9,8 @@ There are no openly public portals for apprentices to register, this enables emp
 I approached the problem by starting to draw out the erd and site map.  The ERD was then split into MVP and future state.  I decided to just focus on apprentices with the employer login
 being a secondary feature set.
 
+
+
 ##Challenges
 
 ###Sinatra vs Active Records
@@ -28,4 +30,3 @@ don't panic!
 complete one component at a time, this was a bigger project and I was all over the shop.
 user trello (i did have a trello board set up with features and to do items which, when panic set in I didn't use)
 I need to learn Ruby and understand what sinatra and ruby do.
- 
