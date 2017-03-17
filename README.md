@@ -8,11 +8,13 @@ There are no openly public portals for apprentices to register, this enables emp
 ## approach to the problem
 I approached the problem by starting to draw out the erd and site map.  The ERD was then split into MVP and future state.  I decided to just focus on apprentices with the employer login
 being a secondary feature set.
-ERD:
-[[https://github.com/SamWij/apprenticeships/blob/master/apprentice_erd.jpg]]
 
+ERD:
+
+![Alt text](/SamWij/apprenticeships/blob/master/apprentice_erd.jpg])
 Site Map:
-[[https://github.com/SamWij/apprenticeships/blob/master/apprentice_erd-2.jpg]]
+![Alt text](SamWij/apprenticeships/blob/master/apprentice_erd-2.jpg])
+
 
 ##Challenges
 
