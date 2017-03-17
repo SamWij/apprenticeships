@@ -1,6 +1,6 @@
-require 'pry'
+# require 'pry'
 require 'sinatra'
-require 'sinatra/reloader'
+# require 'sinatra/reloader'
 require 'active_record'
 require_relative 'database_config'
 require_relative 'models/apprentice'
