@@ -77,7 +77,7 @@ end
 
 
 post '/apprentice_cv' do
-
+  new_user = session[:id]
   #workPreferences
   work_pref = WorkPreferences.new
   work_pref.apprentice_profile_id = session[:id]
