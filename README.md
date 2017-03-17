@@ -11,9 +11,9 @@ being a secondary feature set.
 
 ERD:
 
-![Alt text](/SamWij/apprenticeships/blob/master/apprentice_erd.jpg])
+![Alt text](https://github.com/SamWij/apprenticeships/blob/master/apprentice_erd.jpg])
 Site Map:
-![Alt text](SamWij/apprenticeships/blob/master/apprentice_erd-2.jpg])
+![Alt text](https://github.com/SamWij/apprenticeships/blob/master/apprentice_erd-2.jpg])
 
 
 ##Challenges
