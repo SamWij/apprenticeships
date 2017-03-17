@@ -10,10 +10,11 @@ I approached the problem by starting to draw out the erd and site map.  The ERD 
 being a secondary feature set.
 
 ERD:
+![alt tag](https://github.com/SamWij/apprenticeships/blob/master/apprentice_erd-2.jpg "Site Map")
 
-![Alt text](/apprenticeships/blob/master/apprentice_erd-2.jpg])
 Site Map:
-![Alt text](https://github.com/SamWij/apprenticeships/blob/master/apprentice_erd-2.jpg])
+![alt tag](https://github.com/SamWij/apprenticeships/blob/master/apprentice_erd.jpg "relationship diagram")
+
 
 
 ##Challenges
@@ -24,8 +25,12 @@ Not understanding how ruby routes worked and understanding what Sinatra does and
 ###Dynamically adding form fields
 I wanted to add form fields for work experience, education, licenses and referees. So a user can just add how many they wanted.  This was quite difficult and needed javascript.  I struggled to remember javascript! and then could not figure out how i could also add multiple records to the database at once.  This is a future state piece of work.
 
+###sessions, login and logout
+I don't understand this properly and was apparent through this assignment. Also not working on one module at a time led to more confusion.
+
 ## Things Not Finished/ To Do Items
 Validations
+Session and logins
 Employer components
 Dynamically adding fields
 Amend the out of the box bootstrap css.
@@ -34,4 +39,4 @@ Amend the out of the box bootstrap css.
 don't panic!
 complete one component at a time, this was a bigger project and I was all over the shop.
 user trello (i did have a trello board set up with features and to do items which, when panic set in I didn't use)
-I need to learn Ruby and understand what sinatra and ruby do.
+Learn ruby, sinatra and get a better understanding of active records.
