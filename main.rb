@@ -20,7 +20,6 @@ helpers do
   end
 
   def logged_in? #should return true or false
-    # current_user! nil  #will return a true or false - generally wrapped in an if statement.
     !!current_user
   end
 end
@@ -199,11 +198,6 @@ end
 
 
 
-
-
-
-
-
 #delete apprentice
 delete '/apprentice/:id' do
 
@@ -224,7 +218,7 @@ post '/session' do
 
   if a_user && a_user.authenticate(params[:password])
     #you are authnticated and let me create a session for you.
-    session[:id]  = a_user.id
+    session[:user_id]  = a_user.id
     redirect "/view_apprentice/#{a_user.id}"
   else
     # you are not authenticated.
@@ -284,6 +278,6 @@ get '/session/new' do
 end
 
 delete '/session' do
-  session[:id] = nil
+  session[:user_id] = nil
   redirect '/session/new'
 end
